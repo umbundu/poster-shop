@@ -17,6 +17,7 @@ fs.readFile("./directory.json", "utf8", function(err, data) {
 	if (err) {
 		throw err;
 	}
+	
 });
 
 app.get("/search", function(req, res) {
