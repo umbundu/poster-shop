@@ -52,7 +52,7 @@ new Vue({
                         this.lastSearch = this.search;
                         this.products = response.body;  
                         this.loading = false;   
-                    //}.bind(this), 1000);                                 
+                    //}.bind(this), 1000);  // need to use bind to access Vue this context to work                            
                 });
         }
     },
