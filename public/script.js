@@ -1,3 +1,6 @@
+
+var LOAD_NUM = 4;
+
 new Vue({
     el: "#app",
     data: {
@@ -7,7 +10,8 @@ new Vue({
         cart: [],
         search: "cat",
         lastSearch: "",
-        loading: false
+        loading: false,
+        results: []
     },
     methods: {
         addToCart: function (product) {
@@ -43,6 +47,7 @@ new Vue({
             }
         },
         onSubmit: function() {
+            this.results = [];
             this.products = [];
             this.loading = true;
             var path="/search?q=".concat(this.search);
@@ -50,7 +55,8 @@ new Vue({
                 .then(function(response) {
                     //setTimeout(function() {
                         this.lastSearch = this.search;
-                        this.products = response.body;  
+                        this.results = response.body;
+                        this.products = this.results.slice(0, LOAD_NUM);
                         this.loading = false;   
                     //}.bind(this), 1000);  // need to use bind to access Vue this context to work                            
                 });
