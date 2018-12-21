@@ -376,3 +376,26 @@ body {
 .fade-enter-active {
     transition: opacity .5s
 }
+
+/*
+Let's now use slightly more sophisticated CSS. Instead of hiding the element with the v-cloak attribute, let's instead hide it's children. We'll also get rid of the important property.
+*/
+
+[v-cloak] > * {
+    display: none;
+}
+
+/*
+We do this so that we can then overwrite this rule and display just the loading div. So we can put display: block; here, and let's give it a bit of padding too.
+*/
+[v-cloak] > #loading {
+    display: block;
+    padding: 1em;
+}
+
+/*
+The final step, is then overwrite that rule and hide the loading message when v-cloak is no longer present.
+*/
+#loading {
+    display: none;
+}
