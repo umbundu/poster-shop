@@ -1,5 +1,6 @@
 
 var LOAD_NUM = 4;
+var watcher;
 
 new Vue({
     el: "#app",
@@ -60,6 +61,9 @@ new Vue({
                         this.loading = false;   
                     //}.bind(this), 1000);  // need to use bind to access Vue this context to work                            
                 });
+        },
+        appendResults: function() {
+            console.log("Append results");
         }
     },
     filters: {
@@ -69,6 +73,20 @@ new Vue({
     },
     created: function() {
         this.onSubmit();
-    }
+    },
+    updated: function() {
+
+        var elem = document.querySelector("#product-list-bottom");
+        var watcher = scrollMonitor.create(elem);
+        watcher.enterViewport(this.appendResults);
+
+    },
+    beforeUpdate: function() {
+        if(watcher) {
+            watcher.destroy();
+            watcher = null;
+        }
+      }
+
 });
 
