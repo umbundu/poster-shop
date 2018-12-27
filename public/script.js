@@ -83,7 +83,7 @@ var watcher;
         updated: function () {
 
             var elem = document.querySelector("#product-list-bottom");
-            var watcher = scrollMonitor.create(elem);
+            watcher = scrollMonitor.create(elem);
             watcher.enterViewport(this.appendResults);
 
         },
