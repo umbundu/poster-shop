@@ -2,7 +2,7 @@
 var LOAD_NUM = 4;
 var watcher;
 
-setTimeout(function () {
+//setTimeout(function () {
 
     new Vue({
         el: "#app",
@@ -95,7 +95,7 @@ setTimeout(function () {
         }
 
     });
-}, 3000);
+//}, 3000);
 
 
 
